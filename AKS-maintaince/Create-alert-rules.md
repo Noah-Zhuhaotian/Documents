@@ -14,7 +14,6 @@ You can use the templete of the following pipeline to provision the alert rules 
 ### Maintain the configuration of alert rules:
 
 * You can refer to the above examples to add your `main.bicep` into your templetes.
-<br/>
 
 * Set up your different rule groups: 
    > _examples_: 
