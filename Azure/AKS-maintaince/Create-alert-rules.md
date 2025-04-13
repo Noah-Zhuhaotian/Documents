@@ -9,7 +9,7 @@ Prometheus alert rules are configured as part of [Prometheus rule groups](https:
 * [Provisioning prometheus collect by Bicep](https://github.com/Azure/prometheus-collector/blob/main/AddonBicepTemplate/recommendedMetricAlerts.bicep)
 
 You can use the templete of the following pipeline to provision the alert rules into workspace in Azure:
-* [The is a link for templete]()
+* [provision the alert rules](AKS/AKS-maintaince/Managed_Prometheus_Rules/release/pipeline-default/steps/deploy-infra/main.bicep)
 
 ### Maintain the configuration of alert rules:
 
@@ -54,7 +54,7 @@ You can use the templete of the following pipeline to provision the alert rules 
 > [!TIP]
 > You can check the following table for reference.
 
-![Table for reference](../assets/images/AlertRules/rules.png)
+![Table for reference](../../assets/images/AlertRules/rules.png)
 
 * Edit and preview your expressions in your Azure Portal:
   + Navigate to your Prometheus explorer.
@@ -62,8 +62,8 @@ You can use the templete of the following pipeline to provision the alert rules 
     > _example_: <br/><br/>
     ```sum by (namespace) (container_memory_rss{job="cadvisor"})/ sum by (namespace) (kube_resourcequota{resource="limits.memory",type="hard"}) > .90```
   + Get your values from your expression:<br/><br/>
-    ![Outcome from your expression1](../assets/images/AlertRules/outcome1.png)
-    ![Outcome from your expression1](../assets/images/AlertRules/outcome2.png)
+    ![Outcome from your expression1](../../assets/images/AlertRules/outcome1.png)
+    ![Outcome from your expression1](../../assets/images/AlertRules/outcome2.png)
 
 > [!NOTE]
 > 1. If you have differenct enviroments, you can set up your alert rules in the same file.<br/>_examples:_<br/> ```resource namespaceAlertsNP 'Microsoft.AlertsManagement/prometheusRuleGroups@2023-03-01' = if ('${split(aksResourceId, '/')[8]}' == 'AKS-NP-002')```
@@ -75,13 +75,13 @@ You can use the templete of the following pipeline to provision the alert rules 
 > You can get the pipeline templetes from [here]().
 
 * Select your cluster and run your pipeline to update your alert rules:<br/><br/>
-![Pipeline1](../assets/images/AlertRules/pipeline1.png)
+![Pipeline1](../../assets/images/AlertRules/pipeline1.png)
 
 * Delete rule groups:
   - Put your rule group name into the below blank:<br/><br/>
-  ![Pipeline2](../assets/images/AlertRules/pipeline2.png)
+  ![Pipeline2](../../assets/images/AlertRules/pipeline2.png)
   - Select `run Delete Rule Groups`<br/><br/>
-  ![Pipeline3](../assets/images/AlertRules/pipeline3.png)
+  ![Pipeline3](../../assets/images/AlertRules/pipeline3.png)
 
 <br/><br/>
 
@@ -90,29 +90,29 @@ You can use the templete of the following pipeline to provision the alert rules 
 1. Check your alerts rules in Azure Protal:
 - From `Azure Monitor workspace`:
    - Navigate to your cluster:<br/><br/>
-   ![validate1](../assets/images/AlertRules/validate1.png)
+   ![validate1](../../assets/images/AlertRules/validate1.png)
    - Click the rules you want to check:<br/><br/>
-   ![validate2](../assets/images/AlertRules/validate2.png)
+   ![validate2](../../assets/images/AlertRules/validate2.png)
 - From `Monitor`
    - Search `Monitor` in the search blank:<br/><br/>
-   ![validate3](../assets/images/AlertRules/validate3.png)
+   ![validate3](../../assets/images/AlertRules/validate3.png)
    - navigate to `Alerts`:<br/><br/>
-   ![validate4](../assets/images/AlertRules/validate4.png)
+   ![validate4](../../assets/images/AlertRules/validate4.png)
    - Click `Prometheus rule groups`:<br/><br/>
-   ![validate5](../assets/images/AlertRules/validate5.png)
+   ![validate5](../../assets/images/AlertRules/validate5.png)
    - Click the alert rules you want to check:<br/><br/>
-   ![validate6](../assets/images/AlertRules/validate6.png)
+   ![validate6](../../assets/images/AlertRules/validate6.png)
    - Go to `rules`:<br/><br/>
-   ![validate7](../assets/images/AlertRules/validate7.png)
+   ![validate7](../../assets/images/AlertRules/validate7.png)
 <br/>
 
 2. Check the fired alerts:
    - From the previous step, go to `history`:<br/><br/>
-   ![validate8](../assets/images/AlertRules/validate8.png)
+   ![validate8](../../assets/images/AlertRules/validate8.png)
    - From the `alert`:<br/><br/>
      - Add a filter, choose `Monitor service`:<br/><br/>
-     ![validate9](../assets/images/AlertRules/validate9.png)
+     ![validate9](../../assets/images/AlertRules/validate9.png)
      - Select `Monitor service`, change `all` to `Prometheus`:<br/><br/>
-     ![validate10](../assets/images/AlertRules/validate10.png) 
+     ![validate10](../../assets/images/AlertRules/validate10.png) 
      - You will find all the fired alerts here:<br/><br/>
-     ![validate11](../assets/images/AlertRules/validate11.png)  
+     ![validate11](../../assets/images/AlertRules/validate11.png)  
