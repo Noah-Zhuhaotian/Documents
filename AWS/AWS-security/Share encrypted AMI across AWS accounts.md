@@ -47,9 +47,9 @@ It is easier to explain it with a example. And I use Packer to bake the encrypte
 aws kms create-grant --key-id arn:aws:kms:ap-southeast-2:11111111:key/d587cf57-80b5-4d64-a2f9-xxxxxxxxxx --grantee-principal arn:aws:iam::22222222:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling --operations "Encrypt" "Decrypt" "ReEncryptFrom" "ReEncryptTo" "GenerateDataKey" "GenerateDataKeyWithoutPlaintext" "DescribeKey"
 ```
 **Step four**: Update the packer template file to add the following two parameters in the builder section to enforce the AMI encryption in source account.
-```
-      "encrypt_boot": true,
-      "kms_key_id": "arn:aws:kms:ap-southeast-2:11111111:key/d587cf57-80b5-4d64-a2f9-xxxxxxxxxx",
+```json
+   "encrypt_boot": true,
+   "kms_key_id": "arn:aws:kms:ap-southeast-2:11111111:key/d587cf57-80b5-4d64-a2f9-xxxxxxxxxx",
 ```
 **Step five**: Bake a new AMI with the above packer template in the source account `11111111`, then share the encrypted AMI with a target account `22222222` <br/><br/>
 
