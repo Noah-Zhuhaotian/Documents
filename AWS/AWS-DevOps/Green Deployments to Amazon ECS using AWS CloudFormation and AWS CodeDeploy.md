@@ -56,18 +56,18 @@ build:
 ```yaml
 - Name: BuildCodeDeployArtifacts
   Actions:
-	  - Name: BuildCodeDeployArtifacts
-	    ActionTypeId:
-		    Category: Build
-    		Owner: AWS
-    		Provider: CodeBuild
-    		Version: "1"
-	    Configuration:
-  		  ProjectName: !Sub "${pApplicationName}-CodeDeployConfigBuild"
-		    EnvironmentVariables: '[{"name": "TASKDEF_ARN", "value": "#{DeployInfraVariables.oTaskDefinitionArn}", "type": "PLAINTEXT"},{"name": "HOOKS_LAMBDA_ARN", "value": "#{DeployInfraVariables.oAfterInstallHookLambdaArn}", "type": "PLAINTEXT"}]'
-	    InputArtifacts:
-        - Name: Source
-      OutputArtifacts:
-        - Name: CodeDeployConfig
-	    RunOrder: 1
+  - Name: BuildCodeDeployArtifacts
+	  ActionTypeId:
+      Category: Build
+  		Owner: AWS
+  		Provider: CodeBuild
+  		Version: "1"
+	  Configuration:
+  		ProjectName: !Sub "${pApplicationName}-CodeDeployConfigBuild"
+		  EnvironmentVariables: '[{"name": "TASKDEF_ARN", "value": "#{DeployInfraVariables.oTaskDefinitionArn}", "type": "PLAINTEXT"},{"name": "HOOKS_LAMBDA_ARN", "value": "#{DeployInfraVariables.oAfterInstallHookLambdaArn}", "type": "PLAINTEXT"}]'
+	  InputArtifacts:
+      - Name: Source
+    OutputArtifacts:
+      - Name: CodeDeployConfig
+	  RunOrder: 1
 ```
