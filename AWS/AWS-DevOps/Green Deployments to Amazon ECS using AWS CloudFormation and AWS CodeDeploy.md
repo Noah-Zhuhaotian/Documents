@@ -23,16 +23,16 @@ Some considerations that you may need to account for when implementing the above
 - For leveraging the CodeDeployToECS action in CodePipeline, there are two input files (`appspec.yml` and `taskdef.json`) that are needed. These files/artifacts are used by CodePipeline to create a CodeDeploy deployment that performs Blue/Green deployment on your ECS cluster. The AppSpec file specifies an Amazon ECS task definition for the deployment, a container name and port mapping used to route traffic, and the Lambda functions that run after deployment lifecycle hooks. The container name must be a container in your Amazon ECS task definition. The `taskdef.json` is used by CodePipeline to dynamically generate a new revision of the task definition with the updated application container image in ECR. This is an optional capability supported by the CodeDeployToECS action where it can automatically replace a place holder value (for example `IMAGE1_NAME`) for ImageUri in the `taskdef.json` with the Uri of the updated container Image. In the reference solution we do not use this capability as our `taskdef.json` contains the latest ImageUri that we plan to deploy. To create this `taskdef.json`, you can leverage CodeBuild to dynamically build the `taskdef.json` from the latest task definition ARN. Below are sample CodeBuild buildspec commands that creates the `taskdef.json` from ECS task definition.
 ```yaml
 build:
-    commands:
-      # Create appspec.yml for CodeDeploy deployment
-      - python iac/code-deploy/scripts/update-appspec.py --taskArn ${TASKDEF_ARN} --hooksLambdaArn ${HOOKS_LAMBDA_ARN} --inputAppSpecFile 'iac/code-deploy/appspec.yml' --outputAppSpecFile '/tmp/appspec.yml'
-      # Create taskdefinition for CodeDeploy deployment
-      - aws ecs describe-task-definition --task-definition ${TASKDEF_ARN} --region ${AWS_REGION} --query taskDefinition >> taskdef.json
-    artifacts:
-      files:
-          - /tmp/appspec.yml
-          - /tmp/taskdef.json
-      discard-paths: yes
+  commands:
+    # Create appspec.yml for CodeDeploy deployment
+    - python iac/code-deploy/scripts/update-appspec.py --taskArn ${TASKDEF_ARN} --hooksLambdaArn ${HOOKS_LAMBDA_ARN} --inputAppSpecFile 'iac/code-deploy/appspec.yml' --outputAppSpecFile '/tmp/appspec.yml'
+    # Create taskdefinition for CodeDeploy deployment
+    - aws ecs describe-task-definition --task-definition ${TASKDEF_ARN} --region ${AWS_REGION} --query taskDefinition >> taskdef.json
+  artifacts:
+    files:
+        - /tmp/appspec.yml
+        - /tmp/taskdef.json
+    discard-paths: yes
 ```
 - To generate the `appspec.yml`, you can leverage a python or shell script and a placeholder `appspec.yml` in your source repository to dynamically generate the updated `appspec.yml` file. For example, the below code snippet updates the placeholder values in an `appspec.yml` to generate an updated appspec.yml that is used in the deploy stage. In this example, we set the values of `AfterAllowTestTraffic` hook, the Container name, Container port values from task definition and Hooks Lambda ARN that is passed as input to the script.
 ```bash
@@ -56,18 +56,18 @@ build:
 ```yaml
 - Name: BuildCodeDeployArtifacts
   Actions:
-	- Name: BuildCodeDeployArtifacts
-	  ActionTypeId:
-		Category: Build
-		Owner: AWS
-		Provider: CodeBuild
-		Version: "1"
-	  Configuration:
-		ProjectName: !Sub "${pApplicationName}-CodeDeployConfigBuild"
-		EnvironmentVariables: '[{"name": "TASKDEF_ARN", "value": "#{DeployInfraVariables.oTaskDefinitionArn}", "type": "PLAINTEXT"},{"name": "HOOKS_LAMBDA_ARN", "value": "#{DeployInfraVariables.oAfterInstallHookLambdaArn}", "type": "PLAINTEXT"}]'
-	  InputArtifacts:
-		- Name: Source
-	  OutputArtifacts:
-		- Name: CodeDeployConfig
-	  RunOrder: 1
+	  - Name: BuildCodeDeployArtifacts
+	    ActionTypeId:
+		    Category: Build
+    		Owner: AWS
+    		Provider: CodeBuild
+    		Version: "1"
+	    Configuration:
+  		  ProjectName: !Sub "${pApplicationName}-CodeDeployConfigBuild"
+		    EnvironmentVariables: '[{"name": "TASKDEF_ARN", "value": "#{DeployInfraVariables.oTaskDefinitionArn}", "type": "PLAINTEXT"},{"name": "HOOKS_LAMBDA_ARN", "value": "#{DeployInfraVariables.oAfterInstallHookLambdaArn}", "type": "PLAINTEXT"}]'
+	    InputArtifacts:
+        - Name: Source
+      OutputArtifacts:
+        - Name: CodeDeployConfig
+	    RunOrder: 1
 ```
