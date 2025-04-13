@@ -53,21 +53,21 @@ build:
 
 4. **Passing configuration between different stages of the pipeline**
 - To create an automated pipeline that builds your infrastructure and performs a blue/green deployment for your application, you will need the ability to pass configuration between different stages of your pipeline. For example, when you want to create the `taskdef.json` and `appspec.yml` as mentioned in step `#2`, you need the ARN of the existing task definition and ARN of the CodeDeploy hook Lambda. These components are created in different stages within your pipeline. To facilitate this, you can leverage CodePipeline’s variables and namespaces. For example, in the CodePipeline stage below, we set the value of `TASKDEF_ARN` and `HOOKS_LAMBDA_ARN` environment variables by fetching those values from a different stage in the same pipeline where we create those components. An alternate option is to use AWS System Manager Parameter Store to store and retrieve that information.
-```yaml
+```YAML
 - Name: BuildCodeDeployArtifacts
   Actions:
-  - Name: BuildCodeDeployArtifacts
-	  ActionTypeId:
-      Category: Build
-  		Owner: AWS
-  		Provider: CodeBuild
-  		Version: "1"
-	  Configuration:
-  		ProjectName: !Sub "${pApplicationName}-CodeDeployConfigBuild"
-		  EnvironmentVariables: '[{"name": "TASKDEF_ARN", "value": "#{DeployInfraVariables.oTaskDefinitionArn}", "type": "PLAINTEXT"},{"name": "HOOKS_LAMBDA_ARN", "value": "#{DeployInfraVariables.oAfterInstallHookLambdaArn}", "type": "PLAINTEXT"}]'
-	  InputArtifacts:
-      - Name: Source
-    OutputArtifacts:
-      - Name: CodeDeployConfig
-	  RunOrder: 1
+    - Name: BuildCodeDeployArtifacts
+  	  ActionTypeId:
+        Category: Build
+    		Owner: AWS
+    		Provider: CodeBuild
+    		Version: "1"
+  	  Configuration:
+    		ProjectName: !Sub "${pApplicationName}-CodeDeployConfigBuild"
+  		  EnvironmentVariables: '[{"name": "TASKDEF_ARN", "value": "#{DeployInfraVariables.oTaskDefinitionArn}", "type": "PLAINTEXT"},{"name": "HOOKS_LAMBDA_ARN", "value": "#{DeployInfraVariables.oAfterInstallHookLambdaArn}", "type": "PLAINTEXT"}]'
+  	  InputArtifacts:
+        - Name: Source
+      OutputArtifacts:
+        - Name: CodeDeployConfig
+  	  RunOrder: 1
 ```
