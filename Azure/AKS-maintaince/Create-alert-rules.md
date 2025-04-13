@@ -9,7 +9,7 @@ Prometheus alert rules are configured as part of [Prometheus rule groups](https:
 * [Provisioning prometheus collect by Bicep](https://github.com/Azure/prometheus-collector/blob/main/AddonBicepTemplate/recommendedMetricAlerts.bicep)
 
 You can use the templete of the following pipeline to provision the alert rules into workspace in Azure:
-* [provision the alert rules](AKS/AKS-maintaince/Managed_Prometheus_Rules/release/pipeline-default/steps/deploy-infra/main.bicep)
+* [provision the alert rules](https://github.com/Noah-Zhuhaotian/Maintaince_templete/blob/main/AKS/AKS-maintaince/Managed_Prometheus_Rules/release/pipeline-default/steps/deploy-infra/main.bicep)
 
 ### Maintain the configuration of alert rules:
 
