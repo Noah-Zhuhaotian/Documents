@@ -22,32 +22,32 @@ You can use the templete of the following pipeline to provision the alert rules 
      `Kubernetes Namespace`
 
 * Add your alert rules:
-```json
-{
-        alert: '% Memory Usage'
-        expression: 'sum by (namespace) (container_memory_rss{job="cadvisor"})/ sum by (namespace) (kube_resourcequota{resource="limits.memory",type="hard"}) > .90 '
-        for: 'PT10M'
-        annotations: {
-          description: 'Current Memory usage of {{ $labels.namespace }} is: {{  $value | humanizePercentage }}'
-        }
-        enabled: true
-        severity: severitynamespace
-        resolveConfiguration: {
-          autoResolved: false
-          timeToResolve: 'PT10M'
-        }
-        actions: [
-          {
-            actionGroupId: devActionGroupResourceId
-          }
-          {
-            actionGroupId: testActionGroupResourceId
-          }
-          {
-            actionGroupId: emailActionGroupResourceId
-          }
-        ]
+```bicep
+  {
+      alert: '% Memory Usage'
+      expression: 'sum by (namespace) (container_memory_rss{job="cadvisor"})/ sum by (namespace) (kube_resourcequota{resource="limits.memory",type="hard"}) > .90 '
+      for: 'PT10M'
+      annotations: {
+        description: 'Current Memory usage of {{ $labels.namespace }} is: {{  $value | humanizePercentage }}'
       }
+      enabled: true
+      severity: severitynamespace
+      resolveConfiguration: {
+        autoResolved: false
+        timeToResolve: 'PT10M'
+      }
+      actions: [
+        {
+          actionGroupId: devActionGroupResourceId
+        }
+        {
+          actionGroupId: testActionGroupResourceId
+        }
+        {
+          actionGroupId: emailActionGroupResourceId
+        }
+      ]
+  }
 ```
 <br/>
 
