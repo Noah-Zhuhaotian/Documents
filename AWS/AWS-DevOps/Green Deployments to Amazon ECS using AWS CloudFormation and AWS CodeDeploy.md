@@ -24,15 +24,15 @@ Some considerations that you may need to account for when implementing the above
 ```yaml
 build:
     commands:
-        # Create appspec.yml for CodeDeploy deployment
-        - python iac/code-deploy/scripts/update-appspec.py --taskArn ${TASKDEF_ARN} --hooksLambdaArn ${HOOKS_LAMBDA_ARN} --inputAppSpecFile 'iac/code-deploy/appspec.yml' --outputAppSpecFile '/tmp/appspec.yml'
-        # Create taskdefinition for CodeDeploy deployment
-        - aws ecs describe-task-definition --task-definition ${TASKDEF_ARN} --region ${AWS_REGION} --query taskDefinition >> taskdef.json
+      # Create appspec.yml for CodeDeploy deployment
+      - python iac/code-deploy/scripts/update-appspec.py --taskArn ${TASKDEF_ARN} --hooksLambdaArn ${HOOKS_LAMBDA_ARN} --inputAppSpecFile 'iac/code-deploy/appspec.yml' --outputAppSpecFile '/tmp/appspec.yml'
+      # Create taskdefinition for CodeDeploy deployment
+      - aws ecs describe-task-definition --task-definition ${TASKDEF_ARN} --region ${AWS_REGION} --query taskDefinition >> taskdef.json
     artifacts:
-        files:
-            - /tmp/appspec.yml
-            - /tmp/taskdef.json
-        discard-paths: yes
+      files:
+          - /tmp/appspec.yml
+          - /tmp/taskdef.json
+      discard-paths: yes
 ```
 - To generate the `appspec.yml`, you can leverage a python or shell script and a placeholder `appspec.yml` in your source repository to dynamically generate the updated `appspec.yml` file. For example, the below code snippet updates the placeholder values in an `appspec.yml` to generate an updated appspec.yml that is used in the deploy stage. In this example, we set the values of `AfterAllowTestTraffic` hook, the Container name, Container port values from task definition and Hooks Lambda ARN that is passed as input to the script.
 ```bash
