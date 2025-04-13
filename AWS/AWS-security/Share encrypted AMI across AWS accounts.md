@@ -13,33 +13,34 @@ It is easier to explain it with a example. And I use Packer to bake the encrypte
 **Step one**: Setup a key (e.g `arn:aws:kms:ap-southeast-2:11111111:key/d587cf57-80b5-4d64-a2f9-xxxxxxxxxx`) that is dedicated for ami encryption, and it has to be symmetric key. Lets call it ami-sharing-key in source account (e.g `11111111`)
 
 **Step two**: In the source account `11111111`, edit the KMS policy to allow a user or role from target account `22222222` to grant the key. In the sample policy, I grant the role `arn:aws:iam::22222222:role/kms-admin-22222222` kms admin permissions. It may be too much to give the key admin access. I will review it later to make the permission just enough.
-```        {
-            "Sid": "Allow access for Key Administrators",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": [
-                    "arn:aws:iam::11111111:role/kms-admin-11111111",
-                    "arn:aws:iam::22222222:role/kms-admin-22222222"
-                ]
-            },
-            "Action": [
-                "kms:Create*",
-                "kms:Describe*",
-                "kms:Enable*",
-                "kms:List*",
-                "kms:Put*",
-                "kms:Update*",
-                "kms:Revoke*",
-                "kms:Disable*",
-                "kms:Get*",
-                "kms:Delete*",
-                "kms:TagResource",
-                "kms:UntagResource",
-                "kms:ScheduleKeyDeletion",
-                "kms:CancelKeyDeletion"
-            ],
-            "Resource": "*"
-        },
+```json
+    {
+         "Sid": "Allow access for Key Administrators",
+         "Effect": "Allow",
+         "Principal": {
+             "AWS": [
+                 "arn:aws:iam::11111111:role/kms-admin-11111111",
+                 "arn:aws:iam::22222222:role/kms-admin-22222222"
+             ]
+         },
+         "Action": [
+             "kms:Create*",
+             "kms:Describe*",
+             "kms:Enable*",
+             "kms:List*",
+             "kms:Put*",
+             "kms:Update*",
+             "kms:Revoke*",
+             "kms:Disable*",
+             "kms:Get*",
+             "kms:Delete*",
+             "kms:TagResource",
+             "kms:UntagResource",
+             "kms:ScheduleKeyDeletion",
+             "kms:CancelKeyDeletion"
+         ],
+         "Resource": "*"
+     },
 ```
 **Step three**: Assume the `kms-admin-22222222` role in target account `22222222` then run the following command to create grant for the cmk to the AWS service role for autoscaling.
 ```
