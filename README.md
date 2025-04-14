@@ -3,9 +3,8 @@ Recording some documents of my previous work.
 
 ## Azure
 ### AKS
-<a href="./Azure/AKS-maintaince/Create-alert-rules.md">1. How to create alert rules for your Managed Prometheus in AKS</a>&ensp;
-<img src="./assets/images/readme/AKS.svg" alt="AKS" height="20" style="vertical-align: middle;">&ensp;
-<img src="./assets/images/readme/prometheus.svg" alt="Prometheus" height="20" style="vertical-align: middle;">
+<a href="./Azure/AKS-maintaince/Create-alert-rules.md">1. How to create alert rules for your Managed Prometheus in AKS</a>
+<a href="./Azure/AKS-maintaince/Configuring Non-Root Security Context for Kubernetes Pods.md">2. Configuring Non-Root Security Context for Kubernetes Pods</a>
 
 ## AWS
 ### security
