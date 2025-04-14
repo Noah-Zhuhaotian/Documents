@@ -17,7 +17,7 @@ Pods should operate with a defined user or group rather than running as root. Th
 
 The following approach applies to both API and function services with minimal differences.
 - Dockerfile Configuration
-  - Create a dedicated user and group with a non-privileged ID (e.g., 1000):
+  - Create a dedicated user and group with a non-privileged ID (e.g., `1000`):
    ```dockerfile
    # Create non-root user and group
    RUN groupadd -g 1000 appgroup && \
@@ -82,7 +82,7 @@ Web applications typically use nginx as the base image, which already includes a
 
 **3. Vendor Images with Built-in Non-Root Users**
 - Some vendor images already contain non-root users, allowing direct security context configuration in Kubernetes manifests.
-  - **Example**: Bitnami images include a non-root user with UID 1001.
+  - **Example**: Bitnami images include a non-root user with `UID` `1001`.
   ```yaml
   apiVersion: apps/v1
   kind: Deployment
