@@ -143,6 +143,7 @@ artifacts:
   systemctl restart tomcat
   ```
 
+
 ### Step 7: One-Click Deploy
 
 Once everything is set:
@@ -152,3 +153,24 @@ Once everything is set:
   - Builds with CodeBuild
   - Deploys to EC2 with CodeDeploy
 No manual steps required!
+
+*Full Repository Structure Example*
+```css
+/ (root)
+ ├── appspec.yml
+ ├── buildspec.yml
+ ├── scripts/
+ │    └── deploy.sh
+ └── src/
+      └── main/
+          └── java/
+```
+
+[Demo templetes]()
+
+### Conclusion
+
+Using AWS CodePipeline, CodeBuild, and CodeDeploy, you can create a fully automated, secure CI/CD pipeline for your Java applications.
+By managing secrets properly with Secrets Manager, you enhance your system’s security and scalability.
+
+This architecture can be expanded to support more complex build, test, and deployment flows.
