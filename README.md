@@ -11,4 +11,5 @@ Recording some documents of my previous work.
 <a href="./AWS/AWS-security/Share encrypted AMI across AWS accounts.md">1. Share encrypted AMI across AWS accounts</a>
 ### DevOps
 <a href="./AWS/AWS-DevOps/Green Deployments to Amazon ECS using AWS CloudFormation and AWS CodeDeploy.md">1. Green Deployments to Amazon ECS using AWS CloudFormation and AWS CodeDeploy</a>
+<a href="./AWS/AWS-DevOps/Deploying a Java Application to Amazon EC2 Using CodePipeline and CodeDeploy (with GitHub OAuth Token Managed by Secrets Manager).md">1. Deploying a Java Application to Amazon EC2 Using CodePipeline and CodeDeploy (with GitHub OAuth Token Managed by Secrets Manager)</a>
 
