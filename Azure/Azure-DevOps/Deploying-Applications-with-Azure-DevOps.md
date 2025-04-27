@@ -161,6 +161,8 @@ resource "azurerm_key_vault_secret" "db_connection" {
 }
 ```
 
+The templetes link: [here]()
+
 ### Conclusion
 In this article, we explored how to integrate Azure DevOps, GitHub, and Azure services like App Service, SQL Database, and Key Vault to automate the CI/CD pipeline for an ASP.NET Core application. By using Terraform, we automated the infrastructure deployment, ensuring a seamless process from source code to production.
 
