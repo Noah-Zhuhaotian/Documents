@@ -10,26 +10,15 @@ In this article, let's explore how to use Azure DevOps and GitHub to automate th
 ### File Structure Overview
 Below is the file structure for this setup:
 ```bash
-/DevOps-Project
-  ├── azure-pipelines.yml          # Azure Pipelines configuration
-  ├── /src
-  │   ├── /App1                    # ASP.NET Core application code
-  │   │   ├── App1.csproj
-  │   │   ├── /Controllers
-  │   │   ├── /Models
-  │   │   ├── /Views
-  │   └── /Database                 # SQL scripts for DB schema
-  │       ├── schema.sql
-  ├── /terraform                    # Terraform scripts for infrastructure provisioning
-  │   ├── app_service.tf
-  │   ├── sql_server.tf
-  │   ├── key_vault.tf
-  │   └── variables.tf
-  ├── /scripts                      # Deployment scripts
-  │   ├── deploy.sh
-  └── /docs                         # Documentation
-      ├── readme.md
-      ├── setup-guide.md
+├───DBScripts
+├───pipeline-default
+│   ├───steps
+│   │   ├───build
+│   │   ├───deploy-infra
+│   │   └───deploy-solution
+│   └───vars
+└───scripts
+    └───NetworkAccessRestrictions
 ```
 
 ### Project Tracking with Azure DevOps
