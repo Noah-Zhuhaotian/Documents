@@ -55,7 +55,7 @@ Azure Active Directory (Azure AD) is the identity and access management service 
 [**2. Sync Active Directory Domain to Azure AD**](https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/identity/azure-ad)  
 If you are migrating from an on-premises Active Directory, you can sync your on-prem AD domain with Azure AD. Use Azure AD Connect to synchronize users and groups between the on-premises directory and Azure AD.
 
-**3. Configuring App to Use a Service Principal**  
+[**3. Configuring App to Use a Service Principal**](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals?tabs=browser)  
 A Service Principal in Azure AD allows applications and services to access resources in Azure securely. We will create a Service Principal for App1 and assign it the necessary permissions to access Azure resources like Key Vault.
 ```bash
 # Create Service Principal
