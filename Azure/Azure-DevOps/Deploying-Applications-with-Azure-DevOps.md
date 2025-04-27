@@ -10,15 +10,19 @@ In this article, let's explore how to use Azure DevOps and GitHub to automate th
 ### File Structure Overview
 Below is the file structure for this setup:
 ```bash
-├───DBScripts
-├───pipeline-default
-│   ├───steps
-│   │   ├───build
-│   │   ├───deploy-infra
-│   │   └───deploy-solution
-│   └───vars
-└───scripts
-    └───NetworkAccessRestrictions
+├── .gitignore
+├── DBScripts/
+│   └── init.sql                  # Database initialization script
+├── pipeline-default/
+│   ├── debug-pipeline.yml        # Pipeline for debug deployments
+│   ├── release-pipeline.yml      # Pipeline for release deployments
+│   ├── steps/
+│   │   ├── build/                # Build and test steps
+│   │   ├── deploy-infra/         # Infrastructure provisioning steps
+│   │   └── deploy-solution/      # Application deployment steps
+│   └── vars/                     # Environment-specific variables
+├── scripts/                      # Helper scripts
+└── src/                          # Sample .NET API application
 ```
 
 ### Project Tracking with Azure DevOps
@@ -28,7 +32,7 @@ Azure DevOps provides a comprehensive suite of tools to plan, track, and manage 
 1. [Set up a project in Azure DevOps:](https://learn.microsoft.com/en-us/azure/devops/organizations/projects/create-project?view=azure-devops&tabs=browser) Create a project to track all work related to the application.
 2. [Use Azure Boards:](https://learn.microsoft.com/en-us/azure/devops/boards/get-started/plan-track-work?view=azure-devops&tabs=agile-process) Create epics, user stories, tasks, and bugs to track the project's development.
 
-### Source Control with GitHub
+### (Optional) Source Control with GitHub
 For source control, we will use GitHub, hosting our code in private repositories. GitHub integrates seamlessly with Azure DevOps, enabling a smooth CI/CD pipeline.
 1. **GitHub Repositories:** Host your ASP.NET Core application in a private GitHub repository.
 
@@ -51,7 +55,7 @@ Azure Active Directory (Azure AD) is the identity and access management service 
 [**2. Sync Active Directory Domain to Azure AD**](https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/identity/azure-ad)
 If you are migrating from an on-premises Active Directory, you can sync your on-prem AD domain with Azure AD. Use Azure AD Connect to synchronize users and groups between the on-premises directory and Azure AD.
 
-**3. Configuring App1 to Use a Service Principal**
+**3. Configuring App to Use a Service Principal**
 A Service Principal in Azure AD allows applications and services to access resources in Azure securely. We will create a Service Principal for App1 and assign it the necessary permissions to access Azure resources like Key Vault.
 ```bash
 # Create Service Principal
@@ -63,13 +67,13 @@ GitHub can be integrated with Azure AD to enable single sign-on (SSO). This inte
 ### DevOps Environment Setup
 We will now focus on deploying the application to Azure, configuring source control for the database, and monitoring development progress with Azure DevOps
 
-**1. Deploying App1 to Azure App Service**
-We will deploy the ASP.NET Core application to Azure App Service using Terraform to automate infrastructure provisioning. The app will be configured to use a SQL Database for persistent storage.
+**Deploying App to Azure**
+We can deploy the ASP.NET Core application to Azure App Service using Terraform to automate infrastructure provisioning. The app will be configured to use a SQL Database for persistent storage.
 
-**2. Source Control for the DB1 Schema**
-The database schema (DB1) will be stored in GitHub and integrated with Azure Pipelines. The schema can be versioned, and any changes will trigger automatic deployment and updates.
+**Source Control for the DB Schema**
+The database schema (DB) will be stored in Azure DevOps or GitHub and integrated with Azure Pipelines. The schema can be versioned, and any changes will trigger automatic deployment and updates.
 
-1. Store database schema in GitHub as SQL scripts or migrations.
+1. Store database schema in Azure DevOps or GitHub as SQL scripts or migrations.
 
 2. Use Azure DevOps Pipelines to deploy database updates alongside application deployments.
 
@@ -150,7 +154,7 @@ resource "azurerm_key_vault_secret" "db_connection" {
 }
 ```
 
-The templetes link: [here]()
+The templetes link: [here](https://github.com/Noah-Zhuhaotian/Maintaince_templete/tree/main/Azure/DeployApplicationsToAzure)
 
 ### Conclusion
 In this article, we explored how to integrate Azure DevOps, GitHub, and Azure services like App Service, SQL Database, and Key Vault to automate the CI/CD pipeline for an ASP.NET Core application. By using Terraform, we automated the infrastructure deployment, ensuring a seamless process from source code to production.
