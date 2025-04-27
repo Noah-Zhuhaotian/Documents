@@ -154,7 +154,7 @@ resource "azurerm_key_vault_secret" "db_connection" {
 }
 ```
 > [!NOTE]
-> The templetes link: [here](https://github.com/Noah-Zhuhaotian/Maintaince_templete/tree/main/Azure/DeployApplicationsToAzure)
+> You can use the templete from [here!](https://github.com/Noah-Zhuhaotian/Maintaince_templete/tree/main/Azure/DeployApplicationsToAzure)
 
 
 ### Conclusion
