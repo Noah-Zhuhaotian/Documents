@@ -67,17 +67,17 @@ GitHub can be integrated with Azure AD to enable single sign-on (SSO). This inte
 ### DevOps Environment Setup
 We will now focus on deploying the application to Azure, configuring source control for the database, and monitoring development progress with Azure DevOps
 
-**Deploying App to Azure**
+**Deploying App to Azure**  
 We can deploy the ASP.NET Core application to Azure App Service using Terraform to automate infrastructure provisioning. The app will be configured to use a SQL Database for persistent storage.
 
-**Source Control for the DB Schema**
+**Source Control for the DB Schema**  
 The database schema (DB) will be stored in Azure DevOps or GitHub and integrated with Azure Pipelines. The schema can be versioned, and any changes will trigger automatic deployment and updates.
 
 1. Store database schema in Azure DevOps or GitHub as SQL scripts or migrations.
 
 2. Use Azure DevOps Pipelines to deploy database updates alongside application deployments.
 
-**3. Azure DevOps Dashboard for Stakeholder Monitoring**
+**3. Azure DevOps Dashboard for Stakeholder Monitoring**  
 An Azure DevOps dashboard will be created to provide stakeholders with insights into the development progress. The dashboard will display information such as the status of builds, releases, and work items.
 
 1. Create a custom dashboard in Azure DevOps.
@@ -85,7 +85,7 @@ An Azure DevOps dashboard will be created to provide stakeholders with insights 
 3. Share the dashboard with stakeholders to keep them updated.
 
 
-### Using Azure Key Vault for Secret Management
+### Using Azure Key Vault for Secret Management  
 To securely manage application secrets (such as database connection strings), we will use Azure Key Vault. Storing sensitive data in Key Vault ensures that secrets are never exposed in the codebase.
 1. **Create a Key Vault:** Use Terraform to create a Key Vault resource.
 2. **Store Database Connection String:** The database connection string will be stored in Key Vault as a secret.
