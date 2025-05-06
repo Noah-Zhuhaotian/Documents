@@ -3,6 +3,9 @@
 ## Introduction
 
 In today's data-driven world, establishing secure connections between your Azure resources is of paramount importance. This article will guide you through the process of creating a linked service in Azure Data Factory (DF1) that connects to Azure SQL Database (SQL1) using Microsoft SQL Server authentication, with the password securely stored in Azure Key Vault (KV1). We'll implement this solution following the principle of least privilege to ensure maximum security with minimal access rights. Additionally, we'll explore various automation options to streamline the deployment process.
+*<center>architecture diagram</center>*
+![Secure Azure Data Integration Architecture](/assets/images/Azure/azure-data-integration.png)
+
 
 ## Understanding the Components
 
