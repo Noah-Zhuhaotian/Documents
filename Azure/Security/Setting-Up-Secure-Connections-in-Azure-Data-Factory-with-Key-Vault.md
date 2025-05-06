@@ -533,7 +533,8 @@ Implementing automation for your Azure Data Factory secure connections offers se
 
 3. **Scalable Deployment**: If you need to deploy the same configuration across multiple environments, automation scripts can be easily adapted to different environments.
 
-4. **CI/CD Integration**: Any of the above scripts can be integrated into continuous integration and continuous deployment pipelines for end-to-end automation.
+4. **CI/CD Integration**: Any of the above scripts can be integrated into continuous integration and continuous deployment pipelines for end-to-end automation, you can click *[here](https://github.com/Noah-Zhuhaotian/Maintaince_templete/tree/main/Azure/Security/DF_SQL)!* for reference!
+
 
 ## Best Practices for Automation
 
