@@ -7,8 +7,8 @@ Recording some documents of my previous work.
 2. <a href="./Azure/AKS-maintaince/Configuring Non-Root Security Context for Kubernetes Pods.md">Configuring Non-Root Security Context for Kubernetes Pods</a>
 ### DevOps
 1. <a href="./Azure/Azure-DevOps/Deploying-Applications-with-Azure-DevOps.md">Implementing DevOps with Azure and GitHub</a>
-### Security
-1. <a href="./Azure/Security/Setting-Up-Secure-Connections-in-Azure-Data-Factory-with-Key-Vault.md">Setting Up Secure Connections in Azure Data Factory with Key Vault</a>
+### Data Integration
+1. <a href="./Azure/Data-integration/Setting-Up-Secure-Connections-in-Azure-Data-Factory-with-Key-Vault.md">Setting Up Secure Connections in Azure Data Factory with Key Vault</a>
 
 
 ## AWS
