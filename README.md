@@ -21,4 +21,4 @@ A collection of detailed guides and documents from my cloud engineering and DevO
 
 ### DevOps
 1. [Green Deployments to Amazon ECS using AWS CloudFormation and AWS CodeDeploy](./AWS/AWS-DevOps/Green%20Deployments%20to%20Amazon%20ECS%20using%20AWS%20CloudFormation%20and%20AWS%20CodeDeploy.md)  
-2. [Deploying a Java Application to Amazon EC2 Using CodePipeline and CodeDeploy](./AWS/AWS-DevOps/Deploying%20a%20Java%20Application%20to%20Amazon%20EC2%20Using%20CodePipeline%20and%20CodeDeploy%20\(with%20GitHub%20OAuth%20Token%20Managed%20by%20Secrets%20Manager\).md) (with GitHub OAuth Token Managed by Secrets Manager)
+2. [Deploying a Java Application to Amazon EC2 Using CodePipeline and CodeDeploy](./AWS/AWS-DevOps/Deploying-a-Java-Application-to-Amazon-EC2-automaticlly.md)
