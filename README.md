@@ -14,6 +14,7 @@ Recording some documents of my previous work.
 ## AWS
 ### security
 1. <a href="./AWS/AWS-security/Share encrypted AMI across AWS accounts.md">Share encrypted AMI across AWS accounts</a>
+2. <a href="./AWS/AWS-security/Automating-AWS-WAF-Protection-for-ALB.md">Automating AWS WAF Protection for Application Load Balancers Using AWS Systems Manager</a>
 ### DevOps
 1. <a href="./AWS/AWS-DevOps/Green Deployments to Amazon ECS using AWS CloudFormation and AWS CodeDeploy.md">Green Deployments to Amazon ECS using AWS CloudFormation and AWS CodeDeploy</a>  
 2. <a href="./AWS/AWS-DevOps/Deploying a Java Application to Amazon EC2 Using CodePipeline and CodeDeploy (with GitHub OAuth Token Managed by Secrets Manager).md">Deploying a Java Application to Amazon EC2 Using CodePipeline and CodeDeploy (with GitHub OAuth Token Managed by Secrets Manager)</a>
