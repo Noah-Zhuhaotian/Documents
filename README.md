@@ -9,6 +9,7 @@ A collection of detailed guides and documents from my cloud engineering and DevO
 
 ### DevOps
 1. [Implementing DevOps with Azure and GitHub](./Azure/Azure-DevOps/Deploying-Applications-with-Azure-DevOps.md)
+2. [Configuring Project Metrics for Dashboards in Azure DevOps: Measuring Work Item Lead Time and Cycle Time Using REST API](./Azure/Azure-DevOps/Configuring-Project-Metrics-for-Dashboards-in-Azure-DevOps.md)
 
 ### Data Integration
 1. [Setting Up Secure Connections in Azure Data Factory with Key Vault](./Azure/Data-integration/Setting-Up-Secure-Connections-in-Azure-Data-Factory-with-Key-Vault.md)
